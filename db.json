@@ -1,13 +1,24 @@
 {
   "posts": [
     {
-      "article_id": "23b0ae0386dc8843956b9246cf80468b",
-      "numberoflikes": 0,
-      "numberofcomments": 0,
-      "comments": []
+      "article_id": "b84f5880ee4b2faf7df9106f2151c676",
+      "numberoflikes": 4,
+      "numberofcomments": 2,
+      "comments": [
+        {
+          "guest": "guest-1728120003989",
+          "comment": "This is a test comment",
+          "time": "05/10/2024, 14:50:03"
+        },
+        {
+          "guest": "guest-1728120067505",
+          "comment": "This is a test comment2",
+          "time": "05/10/2024, 14:51:07"
+        }
+      ]
     },
     {
-      "article_id": "d3462647897b0875e931ad03a2c38e2d",
+      "article_id": "another-article-id",
       "numberoflikes": 0,
       "numberofcomments": 0,
       "comments": []
