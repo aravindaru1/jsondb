@@ -1,44 +1,52 @@
 {
-  "posts": [
-    {
-      "article_id": "b84f5880ee4b2faf7df9106f2151c676",
-      "numberoflikes": 4,
-      "numberofcomments": 3,
-      "comments": [
-        {
-          "guest": "guest-1728120003989",
-          "comment": "This is a test comment",
-          "time": "05/10/2024, 14:50:03"
-        },
-        {
-          "guest": "guest-1728120067505",
-          "comment": "This is a test comment2",
-          "time": "05/10/2024, 14:51:07"
-        },
-        {
-          "guest": "JohnDoe",
-          "comment": "This is a great article!",
-          "time": "2023-10-01T12:34:56Z"
-        }
-      ]
-    },
-    {
-      "article_id": "another-article-id",
-      "numberoflikes": 0,
-      "numberofcomments": 0,
-      "comments": []
-    },
-    {
-      "article_id": "b84f5880ee4b2faf7df9106f2151c634",
-      "numberoflikes": 0,
-      "numberofcomments": 1,
-      "comments": [
-        {
-          "guest": "JohnDoe",
-          "comment": "This is a great article!",
-          "time": "2023-10-01T12:34:56Z"
-        }
-      ]
-    }
-  ]
+  "posts": {
+    "b84f5880ee4b2faf7df9106f2151c676": [
+      {
+        "article_id": "b84f5880ee4b2faf7df9106f2151c676",
+        "numberoflikes": 4,
+        "numberofcomments": 3,
+        "comments": [
+          {
+            "guest": "guest-1728120003989",
+            "comment": "This is a test comment",
+            "time": "05/10/2024, 14:50:03"
+          },
+          {
+            "guest": "guest-1728120067505",
+            "comment": "This is a test comment2",
+            "time": "05/10/2024, 14:51:07"
+          },
+          {
+            "guest": "JohnDoe",
+            "comment": "This is a great article!",
+            "time": "2023-10-01T12:34:56Z"
+          }
+        ]
+      }
+    ],
+    "b84f5880ee4b2faf7df9106f2151c634": [
+      {
+        "article_id": "b84f5880ee4b2faf7df9106f2151c634",
+        "numberoflikes": 0,
+        "numberofcomments": 3,
+        "comments": [
+          {
+            "guest": "JohnDoe",
+            "comment": "This is a great article!",
+            "time": "2023-10-01T12:34:56Z"
+          },
+          {
+            "guest": "JohnDoe",
+            "comment": "This is a great article!",
+            "time": "2023-10-01T12:34:56Z"
+          },
+          {
+            "guest": "JohnDoe",
+            "comment": "This is a great article!",
+            "time": "2023-10-01T12:34:56Z"
+          }
+        ]
+      }
+    ]
+  }
 }
