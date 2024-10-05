@@ -40,6 +40,12 @@ server.post('/posts/:articleId/comment', (req, res) => {
   console.log(`Received comment request for articleId: ${articleId}`);
   console.log(`Request body:`, req.body); // Add this line to log the request body
 
+  const { guest, comment, time } = req.body;
+
+  if (!guest || !comment || !time) {
+    return res.status(400).json({ error: 'Missing required fields: guest, comment, or time' });
+  }
+
   let post = db.posts.find(p => p.article_id === articleId);
   if (!post) {
     // If the post doesn't exist, create a new entry
@@ -53,9 +59,9 @@ server.post('/posts/:articleId/comment', (req, res) => {
   }
 
   const newComment = {
-    guest: `guest-${Date.now()}`,
-    comment: req.body.comment,
-    time: new Date().toLocaleString()
+    guest: guest,
+    comment: comment,
+    time: time
   };
   post.comments.push(newComment);
   post.numberofcomments += 1;
