@@ -17,7 +17,7 @@ server.post('/posts/:articleId/like', (req, res) => {
   const articleId = req.params.articleId;
   console.log(`Received like request for articleId: ${articleId}`);
 
-  let post = db.posts.find(p => p.article_id === articleId);
+  let post = db.posts[articleId] && db.posts[articleId][0];
   if (!post) {
     // If the post doesn't exist, create a new entry
     post = {
@@ -26,7 +26,7 @@ server.post('/posts/:articleId/like', (req, res) => {
       numberofcomments: 0,
       comments: []
     };
-    db.posts.push(post);
+    db.posts[articleId] = [post];
   }
 
   post.numberoflikes += 1;
@@ -47,7 +47,7 @@ server.post('/posts/:articleId/comment', (req, res) => {
   }
 
   try {
-    let post = db.posts.find(p => p.article_id === articleId);
+    let post = db.posts[articleId] && db.posts[articleId][0];
     if (!post) {
       // If the post doesn't exist, create a new entry
       post = {
@@ -56,7 +56,7 @@ server.post('/posts/:articleId/comment', (req, res) => {
         numberofcomments: 0,
         comments: []
       };
-      db.posts.push(post);
+      db.posts[articleId] = [post];
     }
 
     const newComment = {
@@ -72,6 +72,21 @@ server.post('/posts/:articleId/comment', (req, res) => {
     console.error(`Error handling comment request: ${error.message}`);
     res.status(500).json({ error: 'Internal Server Error' });
   }
+});
+
+// Custom route to fetch a specific article by article_id
+server.get('/posts/:articleId', (req, res) => {
+  const articleId = req.params.articleId;
+  console.log(`Received request for articleId: ${articleId}`);
+
+  let post = db.posts[articleId] && db.posts[articleId][0];
+  if (!post) {
+    console.log(`Article with articleId ${articleId} not found`);
+    return res.status(404).json({ error: 'Article not found' });
+  }
+
+  console.log(`Found article:`, post);
+  res.json(post);
 });
 
 server.use(jsonServer.rewriter({}));
