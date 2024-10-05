@@ -46,27 +46,32 @@ server.post('/posts/:articleId/comment', (req, res) => {
     return res.status(400).json({ error: 'Missing required fields: guest, comment, or time' });
   }
 
-  let post = db.posts.find(p => p.article_id === articleId);
-  if (!post) {
-    // If the post doesn't exist, create a new entry
-    post = {
-      article_id: articleId,
-      numberoflikes: 0,
-      numberofcomments: 0,
-      comments: []
-    };
-    db.posts.push(post);
-  }
+  try {
+    let post = db.posts.find(p => p.article_id === articleId);
+    if (!post) {
+      // If the post doesn't exist, create a new entry
+      post = {
+        article_id: articleId,
+        numberoflikes: 0,
+        numberofcomments: 0,
+        comments: []
+      };
+      db.posts.push(post);
+    }
 
-  const newComment = {
-    guest: guest,
-    comment: comment,
-    time: time
-  };
-  post.comments.push(newComment);
-  post.numberofcomments += 1;
-  fs.writeFileSync(filePath, JSON.stringify(db, null, 2));
-  res.json(post);
+    const newComment = {
+      guest: guest,
+      comment: comment,
+      time: time
+    };
+    post.comments.push(newComment);
+    post.numberofcomments += 1;
+    fs.writeFileSync(filePath, JSON.stringify(db, null, 2));
+    res.json(post);
+  } catch (error) {
+    console.error(`Error handling comment request: ${error.message}`);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
 
 server.use(jsonServer.rewriter({}));
