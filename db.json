@@ -1,5 +1,16 @@
 {
   "posts": [
-    { "id": 1, "title": "json-server" }
+    {
+      "article_id": "23b0ae0386dc8843956b9246cf80468b",
+      "numberoflikes": 0,
+      "numberofcomments": 0,
+      "comments": []
+    },
+    {
+      "article_id": "d3462647897b0875e931ad03a2c38e2d",
+      "numberoflikes": 0,
+      "numberofcomments": 0,
+      "comments": []
+    }
   ]
 }
